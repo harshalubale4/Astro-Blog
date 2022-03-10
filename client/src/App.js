@@ -1,25 +1,43 @@
-import logo from './logo.svg';
+import React from 'react';
+import {
+    BrowserRouter as Router,
+    Route,
+    Routes
+} from "react-router-dom";
+import NavBar from './Components/NavBar/NavBar';
+import Footer from './Components/Footer/Footer';
+import HomePage from './Pages/HomePage/HomePage';
 import './App.css';
+import About from './Pages/About/About';
+import AdminLogin from './Pages/AdminLogin/AdminLogin';
+import ContentForm from './Pages/ContentForm/ContentForm';
+import Content from './Pages/Content/Content';
+import Post from './Pages/Post/Post';
+import Error from './Pages/Error/Error';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const App = () => {
+    return (
+        <>
+            <Router>
+                <NavBar />
+                <div className="App">
+                    <Routes>
+                        <Route exact path="/" element={<HomePage />} />
+                        <Route exact path="/about" element={<About />} />
+                        <Route exact path="/adminlogin" element={<AdminLogin />} />
+                        <Route exact path="/contentform" element={<ContentForm />} />
+                        <Route exact path="/content" element={<Content />} />
+                        <Route exact path="/content/:id" element={<Post />} />
+                        <Route exact path="*" element={<Error />} />
+
+
+                    </Routes>
+                </div>
+                <Footer />
+            </Router>
+        </>
+    )
 }
 
-export default App;
+export default App
