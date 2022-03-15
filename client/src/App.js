@@ -30,8 +30,6 @@ const App = () => {
                         <Route exact path="/content" element={<Content />} />
                         <Route exact path="/content/:id" element={<Post />} />
                         <Route exact path="*" element={<Error />} />
-
-
                     </Routes>
                 </div>
                 <Footer />
