@@ -6,6 +6,7 @@ const dbUrl = 'mongodb://localhost:27017/web-blogging';
 const Content = require('./models/content');
 const contentRouter = require('./routes/content');
 const authRouter = require('./routes/auth');
+const cors = require('cors');
 
 mongoose.connect(dbUrl)
     .then(() => {
@@ -17,6 +18,7 @@ mongoose.connect(dbUrl)
     })
 
 app.use(express.json());
+app.use(cors());
 
 app.use('/api/content', contentRouter);
 app.use('/api/auth', authRouter);

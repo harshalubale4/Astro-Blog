@@ -14,6 +14,7 @@ import ContentForm from './Pages/ContentForm/ContentForm';
 import Content from './Pages/Content/Content';
 import Post from './Pages/Post/Post';
 import Error from './Pages/Error/Error';
+import Alert from './Components/Alert/Alert';
 
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
         <>
             <Router>
                 <NavBar />
+                <Alert message={"Hello World"} />
                 <div className="App">
                     <Routes>
                         <Route exact path="/" element={<HomePage />} />
