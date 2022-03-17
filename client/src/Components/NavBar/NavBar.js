@@ -1,13 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 
 const NavBar = () => {
     const location = useLocation();
-    // useEffect(() => {
-
-    // }, [location])
-
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -24,9 +20,7 @@ const NavBar = () => {
                             <li className="nav-item">
                                 <Link className={`nav-link ${location.pathname === "/content" ? "active" : ""}`} to="/content">Content</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/contentform">Content Form</Link>
-                            </li>
+
                         </ul>
                     </div>
                 </div>

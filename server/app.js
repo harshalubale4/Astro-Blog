@@ -1,9 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const port = 5000;
 const mongoose = require('mongoose');
-const dbUrl = 'mongodb://localhost:27017/web-blogging';
-const Content = require('./models/content');
+const dbUrl = `${process.env.MONGO_DB_URL}`;
 const contentRouter = require('./routes/content');
 const authRouter = require('./routes/auth');
 const cors = require('cors');

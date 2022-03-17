@@ -1,20 +1,60 @@
-import React, { useState } from 'react';
-const axios = require('axios');
+import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import AdminContext from '../../Context/admin/AdminContext';
 
 const ContentForm = () => {
+    const navigate = useNavigate();
+    // const { isLoggedInState, isLoggedIn } = useContext(AdminContext);
+    // useEffect(() => {
+    //     isLoggedIn()
+    //     if (!localStorage.getItem('auth-token')) {
+    //         return navigate('/');
+    //     }
+    //     if (!isLoggedInState) {
+    //         return navigate('/');
+    //     };
+    // }, [])
+    const isLoggedIn = async () => {
+        const host = process.env.React_App_Server_Url;
+        if (!localStorage.getItem('auth-token')) {
+            navigate('/');
+            return;
+        }
+        const response = await fetch(`${host}/api/auth/isloggedin`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "auth-token": JSON.stringify(localStorage.getItem('auth-token'))
+            },
+        });
+        const json = await response.json();
+        console.log(json);
+        if (!json.isLoggedIn) {
+            navigate('/');
+        }
+    }
+    useEffect(() => {
+        isLoggedIn();
+    }, [])
+
     const [content, setContent] = useState({ title: '', quote: '', about: '' });
-    const baseUrl = 'localhost:5000';
+    const host = process.env.React_App_Server_Url
     const handleChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
-        console.log(name, value);
         setContent({ ...content, [name]: value })
     }
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const url = `${baseUrl}/content`
-
-
+        const response = await fetch(`${host}/api/content`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "auth-token": JSON.stringify(localStorage.getItem('auth-token'))
+            },
+            body: JSON.stringify({ title: content.title, quote: content.quote, about: content.about })
+        });
+        navigate('/');
         setContent({ title: '', about: '', quote: '' });
     }
     return (

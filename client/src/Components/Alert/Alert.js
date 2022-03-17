@@ -1,12 +1,19 @@
 import React from 'react'
 
-const Alert = ({ message }) => {
+const Alert = (props) => {
+    const capitalize = (word) => {
+        const lower = word.toLowerCase();
+        return lower.charAt(0).toUpperCase() + lower.slice(1);
+    }
     return (
         <>
-            <div className="alert alert-primary w-40" role="alert">
-                This is a primary alert with an example . Give it a click if you like.
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure, eum debitis tenetur beatae eos quod sint reprehenderit blanditiis autem eaque, laboriosam voluptates qui cum quia est assumenda nihil. Vel, nesciunt!
+            <div style={{ height: '50px' }}>
+                {props.alert && (<div className={`alert alert-${props.alert.type} alert-dismissible fadeshow`} role="alert">
+                    <strong>{capitalize(props.alert.type)} </strong> :{props.alert.msg}
+                </div>)
+                }
             </div>
+
         </>
     )
 }

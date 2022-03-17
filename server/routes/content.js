@@ -3,7 +3,7 @@ const router = express.Router();
 const { body, validationResult } = require('express-validator');
 const Content = require('../models/content');
 const { isLoggedIn } = require('../middleware/middleware');
-
+const Admin = require('../models/admin');
 
 router.post('/', [
     body('title', 'Enter a Title of Min Length 5').isLength({ min: 5 }).exists(),
@@ -22,7 +22,7 @@ router.post('/', [
         })
         const response = await content.save();
         console.log(response);
-        res.json({ response });
+        res.json(response);
 
     } catch (e) {
         console.log(e);
@@ -62,5 +62,7 @@ router.delete('/:id', isLoggedIn, async (req, res) => {
         res.json({ error: 'An Error has Occured', message: e.message });
     }
 })
+
+
 
 module.exports = router;

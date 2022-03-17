@@ -1,11 +1,35 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const AdminLogin = () => {
+
+
+const AdminLogin = (props) => {
+    const navigate = useNavigate()
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const handleSubmit = (e) => {
+    const host = process.env.React_App_Server_Url;
+
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(username, password);
+
+        const response = await fetch(`${host}/api/auth/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ username: username, password: password })
+        });
+        const json = await response.json();
+        console.log(json);
+        if (json.success) {
+            localStorage.setItem('auth-token', json.authToken);
+            navigate('/');
+        } else {
+            props.showAlert("Invalid Credentials", "danger");
+            console.log("Not Authenticated");
+        }
         setUsername('');
         setPassword('');
     }

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 
 const Post = () => {
     const { id } = useParams();
-    const host = 'http://localhost:5000';
+    const host = process.env.React_App_Server_Url;
     const [post, setPost] = useState({});
     const fetchPostData = async (id) => {
         const response = await fetch(`${host}/api/content/${id}`, {

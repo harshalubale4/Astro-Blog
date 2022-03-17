@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Card from '../../Components/Card/Card';
-
+// `${process.env.SERVER_URL}`;
 const Content = () => {
-    const host = 'http://localhost:5000';
+    const host = process.env.React_App_Server_Url;
     const [fetchedContent, setFetchedContent] = useState([]);
     const fetchContent = async () => {
         const response = await fetch(`${host}/api/content`, {
