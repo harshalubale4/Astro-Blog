@@ -37,7 +37,7 @@ const ContentForm = () => {
         isLoggedIn();
     }, [])
 
-    const [content, setContent] = useState({ title: '', quote: '', about: '' });
+    const [content, setContent] = useState({ title: '', quote: '', about: '', image: '' });
     const host = process.env.React_App_Server_Url
     const handleChange = (e) => {
         const name = e.target.name;
@@ -75,6 +75,10 @@ const ContentForm = () => {
                     <div className="mb-3 w-50 mx-auto">
                         <label htmlFor="about" className="form-label">About</label>
                         <textarea type="text" className="form-control" id="about" aria-describedby="about" value={content.about} onChange={handleChange} name='about' />
+                    </div>
+                    <div className="mb-3 w-50 mx-auto">
+                        <label htmlFor="image" className="form-label">Image</label>
+                        <input type="file" className="form-control" id="image" aria-describedby="image" value={content.image} onChange={handleChange} name='image' />
                     </div>
                     <button type="submit" className="btn btn-primary d-block mx-auto" onClick={handleSubmit}>Submit</button>
                 </form>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Card from '../../Components/Card/Card';
-// `${process.env.SERVER_URL}`;
+
 const Content = () => {
     const host = process.env.React_App_Server_Url;
     const [fetchedContent, setFetchedContent] = useState([]);
@@ -12,6 +12,7 @@ const Content = () => {
             }
         });
         const json = await response.json();
+        json.reverse();
         console.log(json);
         setFetchedContent(json);
     }
@@ -21,11 +22,15 @@ const Content = () => {
 
     return (
         <>
-            {fetchedContent.map((elem) => {
-                return (
-                    <Card title={elem.title} quote={elem.quote} about={elem.about} id={elem._id} />
-                )
-            })}
+            <div className='d-flex flex-row justify-content-between flex-wrap container'>
+                {fetchedContent.map((elem) => {
+                    return (
+                        <div className=''>
+                            <Card title={elem.title} quote={elem.quote} about={elem.about} id={elem._id} />
+                        </div>
+                    )
+                })}
+            </div>
         </>
     )
 }
