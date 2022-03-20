@@ -4,8 +4,11 @@ const { body, validationResult } = require('express-validator');
 const Content = require('../models/content');
 const { isLoggedIn } = require('../middleware/middleware');
 const Admin = require('../models/admin');
+const multer = require("multer");
+const { storage } = require('../cloudinary/index');
+const upload = multer({ storage });
 
-router.post('/', [
+router.post('/', upload.array('image'), [
     body('title', 'Enter a Title of Min Length 5').isLength({ min: 5 }).exists(),
     body('quote', "Please Enter a Quote of Min Length 10").isLength(10).exists(),
     body('about', 'Please Write something in About Section of Min Length 20').isLength({ min: 20 }).exists()
@@ -29,6 +32,12 @@ router.post('/', [
         res.json({ error: 'An Error has Occured', message: e.message });
     }
 });
+
+// router.post('/', upload.array('image'), (req, res) => {
+//     console.log("Hey you Reached it");
+//     res.send(req.body);
+// })
+
 
 router.get('/', async (req, res) => {
     try {

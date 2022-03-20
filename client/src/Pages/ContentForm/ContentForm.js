@@ -1,5 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, version } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import AdminContext from '../../Context/admin/AdminContext';
 
 const ContentForm = () => {
@@ -37,26 +38,90 @@ const ContentForm = () => {
         isLoggedIn();
     }, [])
 
-    const [content, setContent] = useState({ title: '', quote: '', about: '', image: '' });
-    const host = process.env.React_App_Server_Url
+    // const [images, setImages] = useState([]);
+    // const [imageUrls, setImageUrls] = useState([]);
+    // useEffect(() => {
+    //     if (images.length < 1) return;
+    //     const newImageUrls = [];
+    //     images.forEach((image) => {
+    //         newImageUrls.push(URL.createObjectURL(image));
+    //         console.log(URL.createObjectURL(image));
+    //     });
+    //     setImageUrls(newImageUrls);
+    // }, [images]);
+    // function onImageChange(e) {
+    //     setImages([...e.target.files]);
+    // }
+
+
+
+
+
+
+    const [imageUrls, setImageUrls] = useState([]);
+    const [images, setImages] = useState([]);
+    useEffect(() => {
+        if (images.length < 1) return;
+        const newImageUrls = [];
+        images.forEach((image) => {
+            newImageUrls.push(URL.createObjectURL(image));
+        });
+        setImageUrls(newImageUrls);
+    }, [images]);
+
+    const handleFileChange = (event) => {
+        setImages([...event.target.files]);
+    }
+
+
+
+
+
+
+
+
+
+
+    const [content, setContent] = useState({ title: '', quote: '', about: '' });
+
+    const host = process.env.React_App_Server_Url;
     const handleChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
         setContent({ ...content, [name]: value })
     }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch(`${host}/api/content`, {
-            method: "POST",
+
+
+        const data = new FormData();
+        for (var x = 0; x < images.length; x++) {
+            data.append('image', images[x])
+        }
+        data.append('title', content.title);
+        data.append('about', content.about);
+        data.append('quote', content.quote);
+
+
+        // const response = await fetch(`${host}/api/content`, {
+        //     mode: 'no-cors',
+        //     method: "POST",
+        //     body: data
+        //     // body: JSON.stringify({ title: content.title, quote: content.quote, about: content.about, data: data })
+
+        // });
+        const res = await axios.post(`${host}/api/content`, data, {
             headers: {
                 "Content-Type": "application/json",
                 "auth-token": JSON.stringify(localStorage.getItem('auth-token'))
-            },
-            body: JSON.stringify({ title: content.title, quote: content.quote, about: content.about })
-        });
+            }
+        })
         navigate('/');
+        setImages('');
         setContent({ title: '', about: '', quote: '' });
     }
+
     return (
         <>
             <h1 className='text-center'>
@@ -78,13 +143,16 @@ const ContentForm = () => {
                     </div>
                     <div className="mb-3 w-50 mx-auto">
                         <label htmlFor="image" className="form-label">Image</label>
-                        <input type="file" className="form-control" id="image" aria-describedby="image" value={content.image} onChange={handleChange} name='image' />
+                        <input type="file" className="form-control" id="image" multiple accept='image/*' name='image' aria-describedby="image" onChange={(e) => { handleFileChange(e) }} />
                     </div>
+
                     <button type="submit" className="btn btn-primary d-block mx-auto" onClick={handleSubmit}>Submit</button>
                 </form>
+                {imageUrls.map(imageSrc => <img src={imageSrc} className="w-60 m-2" style={{ height: "200px" }} />)}
+
             </div>
         </>
     )
 }
 
-export default ContentForm
+export default ContentForm;
