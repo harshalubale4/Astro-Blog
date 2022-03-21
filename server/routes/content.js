@@ -5,7 +5,7 @@ const Content = require('../models/content');
 const { isLoggedIn } = require('../middleware/middleware');
 const Admin = require('../models/admin');
 const multer = require("multer");
-const { storage } = require('../cloudinary/index');
+const { storage, cloudinary } = require('../cloudinary/index');
 const upload = multer({ storage });
 
 router.post('/', upload.array('image'), [
@@ -21,11 +21,12 @@ router.post('/', upload.array('image'), [
         const content = await Content.create({
             title: req.body.title,
             quote: req.body.quote,
-            about: req.body.about
+            about: req.body.about,
+            images: req.files.map(f => ({ url: f.path, filename: f.filename }))
         })
         const response = await content.save();
         console.log(response);
-        res.json(response);
+        res.json("It Worked");
 
     } catch (e) {
         console.log(e);
@@ -50,22 +51,30 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.get('/:id', async (req, res) => {
+
+router.delete('/:id', isLoggedIn, async (req, res) => {
     try {
         const { id } = req.params;
-        const specificContent = await Content.findOne({ _id: id });
-        res.json(specificContent);
+        const content = await Content.findById(id);
+        if (content.images) {
+            for (let file of content.images) {
+                await cloudinary.uploader.destroy(file.filename);
+            }
+        }
+        const response = await Content.findByIdAndDelete(id);
+        res.json(response);
     } catch (e) {
         console.log(e);
         res.json({ error: 'An Error has Occured', message: e.message });
     }
 })
 
-router.delete('/:id', isLoggedIn, async (req, res) => {
+
+router.get('/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        const response = await Content.findOneAndDelete({ _id: id });
-        res.json(response);
+        const specificContent = await Content.findOne({ _id: id });
+        res.json(specificContent);
     } catch (e) {
         console.log(e);
         res.json({ error: 'An Error has Occured', message: e.message });

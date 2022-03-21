@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 const Post = () => {
+    const navigate = useNavigate();
     const { id } = useParams();
     const host = process.env.React_App_Server_Url;
     const [post, setPost] = useState({});
@@ -20,6 +21,20 @@ const Post = () => {
         fetchPostData(id);
     }, [])
 
+    const deletePost = async () => {
+        const response = await fetch(`${host}/api/content/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "auth-token": JSON.stringify(localStorage.getItem('auth-token'))
+            }
+        });
+        const delResponse = await response.json();
+        console.log(delResponse);
+        setPost('');
+        navigate('/content')
+    }
+
     return (
         <>
             <h1 className='display-2'>
@@ -31,6 +46,15 @@ const Post = () => {
             <h6>
                 {post.about}
             </h6>
+
+            <div>
+                {
+                    post.images && post.images.map((img) => {
+                        return (<img src={img.optimized} className='m-2' style={{ width: "400px" }} />)
+                    })
+                }
+            </div>
+            <button className='btn btn-danger' onClick={deletePost}>Delete this Post</button>
         </>
     )
 }
