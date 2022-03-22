@@ -54,7 +54,12 @@ const Post = () => {
                     })
                 }
             </div>
-            <button className='btn btn-danger' onClick={deletePost}>Delete this Post</button>
+            {
+                localStorage.getItem('auth-token') ?
+                    (<button className='btn btn-danger' onClick={deletePost}>Delete this Post</button>)
+                    : ""
+            }
+
         </>
     )
 }

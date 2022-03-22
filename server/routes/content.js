@@ -42,9 +42,16 @@ router.post('/', upload.array('image'), [
 
 router.get('/', async (req, res) => {
     try {
-        const allContent = await Content.find({});
-        console.log(allContent);
-        res.json(allContent);
+        let allContent = await Content.find({});
+        allContent = allContent.reverse();
+        let numberOfPages = 1;
+        if (req.query.page) {
+            const postPerPage = 4;
+            const pageNumber = req.query.page;
+            numberOfPages = Math.ceil(allContent.length / postPerPage);
+            allContent = allContent.slice((pageNumber - 1) * postPerPage, pageNumber * postPerPage);
+        }
+        res.json({ allContent, numberOfPages });
     } catch (e) {
         console.log(e);
         res.json({ error: 'An Error has Occured', message: e.message });

@@ -1,24 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import Card from '../../Components/Card/Card';
+import CustomPagination from '../../Components/Pagination/CustomPagination';
 
 const Content = () => {
     const host = process.env.React_App_Server_Url;
     const [fetchedContent, setFetchedContent] = useState([]);
+    const [numOfPages, setNumOfPages] = useState(10);
+
+    const [page, setPage] = useState(1);
     const fetchContent = async () => {
-        const response = await fetch(`${host}/api/content`, {
+        const response = await fetch(`${host}/api/content?page=${page}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
             }
         });
         const json = await response.json();
-        json.reverse();
+        setNumOfPages(json.numberOfPages);
         console.log(json);
-        setFetchedContent(json);
+        setFetchedContent(json.allContent);
     }
     useEffect(() => {
         fetchContent();
-    }, []);
+    }, [page]);
 
     return (
         <>
@@ -30,7 +34,9 @@ const Content = () => {
                         </div>
                     )
                 })}
+
             </div>
+            <CustomPagination numberOfPages={numOfPages} setPage={setPage} />
         </>
     )
 }
