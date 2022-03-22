@@ -59,7 +59,6 @@ const Post = () => {
                     (<button className='btn btn-danger' onClick={deletePost}>Delete this Post</button>)
                     : ""
             }
-
         </>
     )
 }
