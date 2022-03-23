@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import "./NavBar.css"
 
-
 const NavBar = () => {
     const navigate = useNavigate();
 
@@ -27,8 +26,6 @@ const NavBar = () => {
         localStorage.clear();
         navigate('/')
     }
-
-
 
     return (
         <>

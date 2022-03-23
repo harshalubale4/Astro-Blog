@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import PuffLoader from 'react-spinners/PuffLoader';
 import SyncLoader from 'react-spinners/SyncLoader';
-const PostCard = ({ img, name }) => {
+const PostImage = ({ img, name }) => {
 
     const [fetching, setFetching] = useState(false);
     const [error, setError] = useState(false);
     const url = `${img.url}`;
-    const filename = `Moony Nicole-` + `${name}`
+    const filename = `Website Name-` + `${name}`
     const [loading, setLoading] = useState(true);
     const [downLoading, setDownLoading] = useState(false);
     const download = (url, name) => {
@@ -34,24 +34,22 @@ const PostCard = ({ img, name }) => {
     };
     return (
         <>
-            <div>
-                <div className='text-center'>
-                    <PuffLoader loading={loading} />
-                </div>
-                <img onLoad={() => setLoading(false)} src={img.optimized} className='m-2' style={{ width: "400px" }} />
-                {/* <button className='btn btn-secondary'>Download</button> */}
-                <SyncLoader loading={downLoading} />
-                <button
-                    className='btn btn-success'
-                    disabled={fetching}
-                    onClick={() => download(url, filename)}
-                    aria-label="download gif"
-                >
-                    DOWNLOAD
-                </button>
+            <div className='text-center'>
+                <PuffLoader loading={loading} />
             </div>
+            <img onLoad={() => setLoading(false)} src={img.optimized} className='m-2' style={{ width: "400px" }} />
+            {/* <button className='btn btn-secondary'>Download</button> */}
+            <SyncLoader loading={downLoading} />
+            <button
+                className='btn btn-success'
+                disabled={fetching}
+                onClick={() => download(url, filename)}
+                aria-label="download gif"
+            >
+                DOWNLOAD
+            </button>
         </>
     )
 }
 
-export default PostCard
+export default PostImage

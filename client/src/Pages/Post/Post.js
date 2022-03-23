@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import PostCard from '../../Components/PostCard/PostCard';
+import PostImage from '../../Components/PostCard/PostImage';
 import SyncLoader from "react-spinners/SyncLoader";
 
 const Post = () => {
@@ -60,7 +60,7 @@ const Post = () => {
                             //     <img src={img.optimized} className='m-2' style={{ width: "400px" }} />)
                             //     <button className='btn btn-secondary'>Download</button>
                             // </div>
-                            <PostCard img={img} key={index} name={index + 1} />
+                            <PostImage img={img} key={index} name={index + 1} />
                         )
                     })
                 }
