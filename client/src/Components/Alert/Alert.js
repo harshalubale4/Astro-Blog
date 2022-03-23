@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import './Alert.css'
 
 const Alert = ({ alert }) => {
     return (
         <>
             {
-                alert && <div className={`alert alert-${alert.type} alert-dismissible fade show`} role="alert">
-                    <h5 className='display-6'>{alert.message}</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                alert && <div className={`alert-${alert.type} alert-container mx-auto mb-4`}>
+                    <h5 className='alert-message text-center my-2'>{alert.message}</h5>
                 </div>
             }
 

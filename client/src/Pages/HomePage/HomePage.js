@@ -1,14 +1,25 @@
-import React from 'react'
+import React from 'react';
+import './HomePage.css';
+import { Link } from 'react-router-dom'
 
 const HomePage = () => {
     return (
         <>
-            <h1>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint dignissimos temporibus dolorum exercitationem corrupti ex, magnam laborum quia inventore sunt illum minima ipsum tempore saepe, vel numquam delectus distinctio molestias.
+            <div id='home-container' className='d-flex flex-row justify-content-around align-content-center mx-auto'>
+                <div className='p-3 para'>
+                    Your One Place to get to know your astro-photographer and their amazing Astro-Content
+                </div>
+                <div>
+                    <Link to='/content' className='circle d-flex flex-column justify-content-center align-items-center'>
+                        <div className='explore'>
+                            Explore
+                        </div>
+                    </Link>
+                </div>
 
-            </h1>
+            </div>
         </>
     )
 }
 
-export default HomePage
+export default HomePage;
