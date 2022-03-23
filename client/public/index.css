@@ -8,6 +8,7 @@
   padding: 0;
   font-family: 'Red Hat Mono', monospace;
   color: white;
+  box-sizing: border-box;
 }
 body{
   background-image:linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url(https://images.unsplash.com/photo-1447433589675-4aaa569f3e05?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1780&q=80);

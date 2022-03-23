@@ -37,7 +37,7 @@ const NavBar = () => {
                 <button className='mobile-nav-toggle' aria-controls='primary-navigation' aria-expanded='false'><span className='sr-only'> </span></button>
 
                 <nav>
-                    <ul id="primary-navigation" data-visible="false" className="primary-navigation underline-indicators flex my-4">
+                    <ul id="primary-navigation" data-visible="false" className="primary-navigation underline-indicators flex my-2">
                         <li>
                             <Link to="/content" className='nav-links'>
                                 Content

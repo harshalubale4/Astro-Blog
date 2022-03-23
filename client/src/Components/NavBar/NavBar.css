@@ -29,7 +29,7 @@
 }
 
 .nav-brand-container{
-    margin: 2rem clamp(1.5rem, 5vw, 3.5rem);
+    margin: 2.5rem clamp(1.5rem, 5vw, 3.5rem);
 }
 
 .primary-header {

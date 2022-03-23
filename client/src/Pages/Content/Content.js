@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Card from '../../Components/Card/Card';
 import CustomPagination from '../../Components/Pagination/CustomPagination';
 import PuffLoader from "react-spinners/PuffLoader";
+import './Content.css'
 
 const Content = ({ showAlert }) => {
     const host = process.env.React_App_Server_Url;
@@ -37,19 +38,24 @@ const Content = ({ showAlert }) => {
         <>
             {
                 loading ? (<PuffLoader size={60} margin={2} speedMultiplier={1} loading={loading} />) :
-                    <div>
-                        <div className='d-flex flex-row justify-content-between flex-wrap container'>
-                            {fetchedContent.map((elem) => {
-                                return (
-                                    <div className=''>
-                                        <Card title={elem.title} quote={elem.quote} about={elem.about} id={elem._id} />
-                                    </div>
-                                )
-                            })}
+                    <>
+                        <div className='content-container'>
+                            <div className='d-flex flex-row justify-content-between flex-wrap container mb-auto'>
+                                {fetchedContent.map((elem) => {
+                                    return (
+                                        <div className=''>
+                                            <Card title={elem.title} quote={elem.quote} about={elem.about} id={elem._id} />
+                                        </div>
+                                    )
+                                })}
+
+                            </div>
 
                         </div>
-                        <CustomPagination numberOfPages={numOfPages} setPage={setPage} />
-                    </div>
+                        <div className='d-flex flex-row justify-content-center mt-auto' id='paginationContainer'>
+                            <CustomPagination numberOfPages={numOfPages} setPage={setPage} />
+                        </div>
+                    </>
             }
         </>
     )
