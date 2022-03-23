@@ -3,7 +3,6 @@ const router = express.Router();
 const { body, validationResult } = require('express-validator');
 const Content = require('../models/content');
 const { isLoggedIn } = require('../middleware/middleware');
-const Admin = require('../models/admin');
 const multer = require("multer");
 const { storage, cloudinary } = require('../cloudinary/index');
 const upload = multer({ storage });
@@ -30,15 +29,9 @@ router.post('/', upload.array('image'), [
 
     } catch (e) {
         console.log(e);
-        res.json({ error: 'An Error has Occured', message: e.message });
+        res.json({ error: 'An Error has Occured creating Content', message: e.message });
     }
 });
-
-// router.post('/', upload.array('image'), (req, res) => {
-//     console.log("Hey you Reached it");
-//     res.send(req.body);
-// })
-
 
 router.get('/', async (req, res) => {
     try {
@@ -54,10 +47,9 @@ router.get('/', async (req, res) => {
         res.json({ allContent, numberOfPages });
     } catch (e) {
         console.log(e);
-        res.json({ error: 'An Error has Occured', message: e.message });
+        res.json({ error: 'An Error has Occured while fetching Content', message: e.message });
     }
 })
-
 
 router.delete('/:id', isLoggedIn, async (req, res) => {
     try {
@@ -72,10 +64,9 @@ router.delete('/:id', isLoggedIn, async (req, res) => {
         res.json(response);
     } catch (e) {
         console.log(e);
-        res.json({ error: 'An Error has Occured', message: e.message });
+        res.json({ error: 'An Error has Occured while deleting a Post', message: e.message });
     }
 })
-
 
 router.get('/:id', async (req, res) => {
     try {
@@ -84,10 +75,8 @@ router.get('/:id', async (req, res) => {
         res.json(specificContent);
     } catch (e) {
         console.log(e);
-        res.json({ error: 'An Error has Occured', message: e.message });
+        res.json({ error: 'An Error has Occured while fetching a Particular Post', message: e.message });
     }
 })
-
-
 
 module.exports = router;

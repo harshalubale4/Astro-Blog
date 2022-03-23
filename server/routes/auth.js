@@ -38,7 +38,7 @@ router.post('/createadmin',
             res.json({ authToken, admin });
         } catch (e) {
             console.log(e);
-            res.json({ error: 'An Error has Occured', message: e.message });
+            res.json({ error: 'An Error has Occured while Creating an Admin', message: e.message });
         }
     })
 
@@ -79,7 +79,7 @@ router.post('/login',
 
         } catch (e) {
             console.log(e);
-            res.json({ error: 'An Error has Occured', message: e.message });
+            res.json({ error: 'An Error has Occured while Authenticating you', message: e.message });
         }
     })
 
@@ -98,7 +98,7 @@ router.get('/isloggedin', async (req, res) => {
         res.status(200).send({ msg: "Yup Buddy, you are logged in", isLoggedIn: true });
     } catch (e) {
         console.log(e);
-        res.json({ error: 'An Error has Occured', message: e.message });
+        res.json({ error: 'An Error has Occured while checking if you are Logged in or not', message: e.message });
     }
 })
 

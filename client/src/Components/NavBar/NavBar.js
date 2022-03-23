@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import "./NavBar.css"
 
 
 const NavBar = () => {
-    const location = useLocation();
-
-
+    const navigate = useNavigate();
 
     useEffect(() => {
         const nav = document.querySelector(".primary-navigation");
@@ -25,38 +23,15 @@ const NavBar = () => {
         })
     }, [])
 
+    const logout = () => {
+        localStorage.clear();
+        navigate('/')
+    }
+
 
 
     return (
-        <div>
-            {/* <nav classNameName="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div classNameName="container-fluid">
-                    <Link classNameName="navbar-brand" to="/">Blogging Web</Link>
-                    <button classNameName="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span classNameName="navbar-toggler-icon"></span>
-                    </button>
-                    <div classNameName="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul classNameName="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li classNameName="nav-item">
-                                <Link classNameName={`nav-link ${location.pathname === "/about" ? "active" : ""}`} aria-current="page" to="/about">About Us</Link>
-                            </li>
-                            <li classNameName="nav-item">
-                                <Link classNameName={`nav-link ${location.pathname === "/content" ? "active" : ""}`} to="/content">Content</Link>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-            </nav> */}
-
-
-
-
-
-
-
-
-
+        <>
             <header className='primary-header flex'>
                 <div className='nav-brand'>
                     <Link to="/">Home</Link>
@@ -77,28 +52,37 @@ const NavBar = () => {
                             </Link>
                         </li>
 
-                        <li>
-                            <Link to="/adminlogin">
-                                <span aria-hidden='true'>02</span>Admin Login
-                            </Link>
-                        </li>
+                        {
+                            !localStorage.getItem('auth-token')
+                                ?
+                                (
+                                    <li>
+                                        <Link to="/adminlogin">
+                                            <span aria-hidden='true'>03</span>Admin Login
+                                        </Link>
+                                    </li>
+                                )
+                                :
+                                (
+                                    <>
+                                        <li>
+                                            <Link to="/contentform">
+                                                <span aria-hidden='true'>04</span>Content Form
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <a className='' onClick={logout}>
+                                                <span aria-hidden='true'>05</span>Logout
+                                            </a>
+                                        </li>
+                                    </>
 
+                                )
+                        }
                     </ul>
                 </nav>
-
             </header>
-
-
-
-
-
-
-
-
-
-
-
-        </div >
+        </>
     )
 }
 

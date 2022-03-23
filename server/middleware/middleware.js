@@ -16,7 +16,7 @@ module.exports.isLoggedIn = async (req, res, next) => {
         }
     } catch (e) {
         console.log(e);
-        res.json({ error: 'An Error has Occured', message: e.message });
+        res.json({ error: 'An Error has Occured checking if you were Authenticated or not...', message: e.message });
     }
 
     next();
