@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import PostCard from '../../Components/PostCard/PostCard';
 
 const Post = () => {
     const navigate = useNavigate();
@@ -49,8 +50,14 @@ const Post = () => {
 
             <div>
                 {
-                    post.images && post.images.map((img) => {
-                        return (<img src={img.optimized} className='m-2' style={{ width: "400px" }} />)
+                    post.images && post.images.map((img, index) => {
+                        return (
+                            // <div key={img._id}>
+                            //     <img src={img.optimized} className='m-2' style={{ width: "400px" }} />)
+                            //     <button className='btn btn-secondary'>Download</button>
+                            // </div>
+                            <PostCard img={img} key={index} name={index + 1} />
+                        )
                     })
                 }
             </div>
