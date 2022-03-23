@@ -3,7 +3,7 @@ import Card from '../../Components/Card/Card';
 import CustomPagination from '../../Components/Pagination/CustomPagination';
 import PuffLoader from "react-spinners/PuffLoader";
 
-const Content = () => {
+const Content = ({ showAlert }) => {
     const host = process.env.React_App_Server_Url;
     const [fetchedContent, setFetchedContent] = useState([]);
     const [numOfPages, setNumOfPages] = useState(10);
@@ -24,7 +24,11 @@ const Content = () => {
     }
     useEffect(() => {
         setLoading(true);
-        fetchContent();
+        try {
+            fetchContent();
+        } catch (e) {
+            showAlert(e.message, 'warning');
+        }
         setLoading(false);
     }, [page]);
 
@@ -45,7 +49,6 @@ const Content = () => {
 
                         </div>
                         <CustomPagination numberOfPages={numOfPages} setPage={setPage} />
-
                     </div>
             }
         </>
