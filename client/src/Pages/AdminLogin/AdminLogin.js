@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SyncLoader from "react-spinners/SyncLoader";
 
-const AdminLogin = (props) => {
+const AdminLogin = ({ showAlert }) => {
     const navigate = useNavigate()
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -25,11 +25,13 @@ const AdminLogin = (props) => {
         });
         const json = await response.json();
         console.log(json);
+        if (json.error) {
+            showAlert(json.error, 'warning')
+        }
         if (json.success) {
             localStorage.setItem('auth-token', json.authToken);
             navigate('/');
         } else {
-            props.showAlert("Invalid Credentials", "danger");
             console.log("Not Authenticated");
         }
         setLoading(false);
@@ -46,11 +48,11 @@ const AdminLogin = (props) => {
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3 w-50 mx-auto">
                         <label htmlFor="username" className="form-label">Admin Username</label>
-                        <input type="text" className="form-control" id="username" aria-describedby="emailHelp" value={username} onChange={(e) => setUsername(e.target.value)} />
+                        <input type="text" className="form-control" id="username" aria-describedby="emailHelp" value={username} onChange={(e) => setUsername(e.target.value)} required />
                     </div>
                     <div className="mb-3 w-50 mx-auto">
                         <label htmlFor="password" className="form-label">Password</label>
-                        <input type="password" className="form-control" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                        <input type="password" className="form-control" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                     </div>
                     <button type="submit" className="btn btn-primary d-block mx-auto">Submit</button>
                 </form>

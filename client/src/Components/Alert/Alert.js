@@ -1,18 +1,14 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-const Alert = (props) => {
-    const capitalize = (word) => {
-        const lower = word.toLowerCase();
-        return lower.charAt(0).toUpperCase() + lower.slice(1);
-    }
+const Alert = ({ alert }) => {
     return (
         <>
-            <div style={{ height: '50px' }}>
-                {props.alert && (<div className={`alert alert-${props.alert.type} alert-dismissible fadeshow`} role="alert">
-                    <strong>{capitalize(props.alert.type)} </strong> :{props.alert.msg}
-                </div>)
-                }
-            </div>
+            {
+                alert && <div className={`alert alert-${alert.type} alert-dismissible fade show`} role="alert">
+                    <h5 className='display-6'>{alert.message}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
 
         </>
     )

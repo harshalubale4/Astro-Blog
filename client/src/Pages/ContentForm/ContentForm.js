@@ -1,20 +1,16 @@
 import React, { useContext, useEffect, useState, version } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import AdminContext from '../../Context/admin/AdminContext';
+import SyncLoader from 'react-spinners/SyncLoader';
 
-const ContentForm = () => {
+const ContentForm = ({ showAlert }) => {
     const navigate = useNavigate();
-    // const { isLoggedInState, isLoggedIn } = useContext(AdminContext);
-    // useEffect(() => {
-    //     isLoggedIn()
-    //     if (!localStorage.getItem('auth-token')) {
-    //         return navigate('/');
-    //     }
-    //     if (!isLoggedInState) {
-    //         return navigate('/');
-    //     };
-    // }, [])
+    const [loading, setLoading] = useState(false);
+    const [imageUrls, setImageUrls] = useState([]);
+    const [images, setImages] = useState([]);
+    const [content, setContent] = useState({ title: '', quote: '', about: '' });
+    const host = process.env.React_App_Server_Url;
+
     const isLoggedIn = async () => {
         const host = process.env.React_App_Server_Url;
         if (!localStorage.getItem('auth-token')) {
@@ -34,32 +30,11 @@ const ContentForm = () => {
             navigate('/');
         }
     }
+
     useEffect(() => {
         isLoggedIn();
     }, [])
 
-    // const [images, setImages] = useState([]);
-    // const [imageUrls, setImageUrls] = useState([]);
-    // useEffect(() => {
-    //     if (images.length < 1) return;
-    //     const newImageUrls = [];
-    //     images.forEach((image) => {
-    //         newImageUrls.push(URL.createObjectURL(image));
-    //         console.log(URL.createObjectURL(image));
-    //     });
-    //     setImageUrls(newImageUrls);
-    // }, [images]);
-    // function onImageChange(e) {
-    //     setImages([...e.target.files]);
-    // }
-
-
-
-
-
-
-    const [imageUrls, setImageUrls] = useState([]);
-    const [images, setImages] = useState([]);
     useEffect(() => {
         if (images.length < 1) return;
         const newImageUrls = [];
@@ -73,18 +48,6 @@ const ContentForm = () => {
         setImages([...event.target.files]);
     }
 
-
-
-
-
-
-
-
-
-
-    const [content, setContent] = useState({ title: '', quote: '', about: '' });
-
-    const host = process.env.React_App_Server_Url;
     const handleChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
@@ -93,8 +56,7 @@ const ContentForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-
+        setLoading(true);
         const data = new FormData();
         for (var x = 0; x < images.length; x++) {
             data.append('image', images[x])
@@ -102,21 +64,22 @@ const ContentForm = () => {
         data.append('title', content.title);
         data.append('about', content.about);
         data.append('quote', content.quote);
-
-
-        // const response = await fetch(`${host}/api/content`, {
-        //     mode: 'no-cors',
-        //     method: "POST",
-        //     body: data
-        //     // body: JSON.stringify({ title: content.title, quote: content.quote, about: content.about, data: data })
-
-        // });
-        const res = await axios.post(`${host}/api/content`, data, {
-            headers: {
-                "Content-Type": "application/json",
-                "auth-token": JSON.stringify(localStorage.getItem('auth-token'))
-            }
-        })
+        let res;
+        try {
+            res = await axios.post(`${host}/api/content`, data, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "auth-token": JSON.stringify(localStorage.getItem('auth-token'))
+                }
+            })
+        } catch (e) {
+            showAlert(e.message, 'warning');
+            setLoading(false);
+            navigate('/');
+            setImages('');
+            setContent({ title: '', about: '', quote: '' });
+        }
+        setLoading(false);
         navigate('/');
         setImages('');
         setContent({ title: '', about: '', quote: '' });
@@ -145,7 +108,7 @@ const ContentForm = () => {
                         <label htmlFor="image" className="form-label">Image</label>
                         <input type="file" className="form-control" id="image" multiple accept='image/*' name='image' aria-describedby="image" onChange={(e) => { handleFileChange(e) }} />
                     </div>
-
+                    <SyncLoader loading={loading} />
                     <button type="submit" className="btn btn-primary d-block mx-auto" onClick={handleSubmit}>Submit</button>
                 </form>
                 {imageUrls.map(imageSrc => <img src={imageSrc} className="w-60 m-2" style={{ height: "200px" }} />)}

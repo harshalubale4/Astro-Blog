@@ -22,12 +22,12 @@ const App = () => {
     const [alert, setAlert] = useState(null);
     const showAlert = (message, type) => {
         setAlert({
-            msg: message,
+            message: message,
             type: type
         })
         setTimeout(() => {
             setAlert(null);
-        }, 1500);
+        }, 3000);
     }
     return (
         <>
@@ -35,14 +35,14 @@ const App = () => {
 
                 <Router>
                     <NavBar />
-                    <Alert message={"Hello World"} />
+                    <Alert alert={alert} />
                     <div className="App">
                         <Routes>
                             <Route exact path="/" element={<HomePage />} />
                             <Route exact path="/about" element={<About />} />
                             <Route exact path="/adminlogin" element={<AdminLogin showAlert={showAlert} />} />
-                            <Route exact path="/contentform" element={<ContentForm />} />
-                            <Route exact path="/content" element={<Content />} />
+                            <Route exact path="/contentform" element={<ContentForm showAlert={showAlert} />} />
+                            <Route exact path="/content" element={<Content showAlert={showAlert} />} />
                             <Route exact path="/content/:id" element={<Post />} />
                             <Route exact path="*" element={<Error />} />
                         </Routes>
