@@ -30,22 +30,23 @@ const NavBar = () => {
     return (
         <>
             <header className='primary-header flex'>
-                <div className='nav-brand'>
-                    <Link to="/">Home</Link>
+                <div className='nav-brand-container'>
+                    <Link to="/" className='nav-brand'>
+                        Moony Nicole</Link>
                 </div>
                 <button className='mobile-nav-toggle' aria-controls='primary-navigation' aria-expanded='false'><span className='sr-only'> </span></button>
 
                 <nav>
-                    <ul id="primary-navigation" data-visible="false" className="primary-navigation flex">
-                        <li className='active'>
-                            <Link to="/content">
-                                <span aria-hidden='true'>01</span>Content
+                    <ul id="primary-navigation" data-visible="false" className="primary-navigation underline-indicators flex my-4">
+                        <li>
+                            <Link to="/content" className='nav-links'>
+                                Content
                             </Link>
                         </li>
 
-                        <li>
-                            <Link to="/about">
-                                <span aria-hidden='true'>02</span>About
+                        <li >
+                            <Link to="/about" className='nav-links'>
+                                About
                             </Link>
                         </li>
 
@@ -54,8 +55,8 @@ const NavBar = () => {
                                 ?
                                 (
                                     <li>
-                                        <Link to="/adminlogin">
-                                            <span aria-hidden='true'>03</span>Admin Login
+                                        <Link to="/adminlogin" className='nav-links'>
+                                            Admin Login
                                         </Link>
                                     </li>
                                 )
@@ -63,17 +64,16 @@ const NavBar = () => {
                                 (
                                     <>
                                         <li>
-                                            <Link to="/contentform">
-                                                <span aria-hidden='true'>04</span>Content Form
+                                            <Link to="/contentform" className='nav-links'>
+                                                Content Form
                                             </Link>
                                         </li>
                                         <li>
-                                            <a className='' onClick={logout}>
-                                                <span aria-hidden='true'>05</span>Logout
+                                            <a className='nav-links' onClick={logout}>
+                                                Logout
                                             </a>
                                         </li>
                                     </>
-
                                 )
                         }
                     </ul>

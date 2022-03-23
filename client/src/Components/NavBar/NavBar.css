@@ -4,7 +4,32 @@
 }
 
 .nav-brand{
-   margin: 2rem; 
+    font-family: 'Dancing Script', cursive;
+    letter-spacing: 0.2rem;
+    font-size: 3.7rem;
+    text-decoration: none;
+    color: white;
+    margin-left: 2.4rem;
+}
+
+.nav-brand:hover{
+    color: rgba(175, 170, 170, 0.514);
+}
+
+.nav-links{
+    font-size:1.2rem;
+    color: white;
+    transition: 0.1s;
+    cursor: pointer;
+}
+
+.nav-links:hover{
+    color: rgba(219, 213, 213, 0.514);
+    border-bottom: 3px solid rgba(219, 213, 213, 0.514);
+}
+
+.nav-brand-container{
+    margin: 2rem clamp(1.5rem, 5vw, 3.5rem);
 }
 
 .primary-header {
