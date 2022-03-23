@@ -1,16 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-
+import SyncLoader from "react-spinners/SyncLoader";
 
 const AdminLogin = (props) => {
     const navigate = useNavigate()
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const host = process.env.React_App_Server_Url;
+    const [loading, setLoading] = useState(false);
+    let color = "#FFFFFF";
 
 
     const handleSubmit = async (e) => {
+        setLoading(true);
         e.preventDefault();
         console.log(username, password);
 
@@ -30,11 +32,13 @@ const AdminLogin = (props) => {
             props.showAlert("Invalid Credentials", "danger");
             console.log("Not Authenticated");
         }
+        setLoading(false);
         setUsername('');
         setPassword('');
     }
     return (
         <>
+            <SyncLoader loading={loading} height={10} width={100} />
             <h1 className='text-center'>
                 This is a Login Page for Admin
             </h1>
