@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState, version } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import SyncLoader from 'react-spinners/SyncLoader';
+import './ContentForm.css'
 
 const ContentForm = ({ showAlert }) => {
     const navigate = useNavigate();
@@ -43,6 +44,30 @@ const ContentForm = ({ showAlert }) => {
         });
         setImageUrls(newImageUrls);
     }, [images]);
+
+    useEffect(() => {
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needsValidation')
+
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    }, [])
+
 
     const handleFileChange = (event) => {
         setImages([...event.target.files]);
@@ -87,32 +112,31 @@ const ContentForm = ({ showAlert }) => {
 
     return (
         <>
-            <h1 className='text-center'>
-                This is the Content Form
-            </h1>
-            <div>
-                <form>
-                    <div className="mb-3 w-50 mx-auto">
+            <div className='contentFormConatiner d-flex flex-column container px-5 py-3'>
+                <h1 className='text-center'>
+                    Content Form
+                </h1>
+                <form onSubmit={handleSubmit} className='needsValidation' noValidate>
+                    <div className="mb-3 w-60 mx-auto">
                         <label htmlFor="title" className="form-label">Title</label>
-                        <input type="text" className="form-control" id="title" aria-describedby="title" value={content.title} onChange={handleChange} name='title' />
+                        <input type="text" className="form-control" id="title" aria-describedby="title" value={content.title} onChange={handleChange} name='title' required />
                     </div>
-                    <div className="mb-3 w-50 mx-auto">
-                        <label htmlFor="quote" className="form-label">Quote</label>
-                        <input type="text" className="form-control" id="quote" aria-describedby="quote" value={content.quote} onChange={handleChange} name='quote' />
-                    </div>
-                    <div className="mb-3 w-50 mx-auto">
+                    <div className="mb-3 w-60 mx-auto">
                         <label htmlFor="about" className="form-label">About</label>
-                        <textarea type="text" className="form-control" id="about" aria-describedby="about" value={content.about} onChange={handleChange} name='about' />
+                        <textarea type="text" className="form-control" id="about" aria-describedby="about" value={content.about} onChange={handleChange} name='about' required />
                     </div>
-                    <div className="mb-3 w-50 mx-auto">
+                    <div className="mb-3 w-60 mx-auto">
+                        <label htmlFor="quote" className="form-label">Quote</label>
+                        <textarea type="text" className="form-control" id="quote" aria-describedby="quote" value={content.quote} onChange={handleChange} name='quote' required />
+                    </div>
+                    <div className="mb-3 w-60 mx-auto">
                         <label htmlFor="image" className="form-label">Image</label>
-                        <input type="file" className="form-control" id="image" multiple accept='image/*' name='image' aria-describedby="image" onChange={(e) => { handleFileChange(e) }} />
+                        <input type="file" className="form-control" id="image" multiple accept='image/*' name='image' aria-describedby="image" onChange={(e) => { handleFileChange(e) }} required />
                     </div>
-                    <SyncLoader loading={loading} />
-                    <button type="submit" className="btn btn-primary d-block mx-auto" onClick={handleSubmit}>Submit</button>
+                    {imageUrls.map(imageSrc => <img src={imageSrc} className="w-60 m-2" style={{ height: "200px" }} />)}
+                    <button type="submit" id="submitButton" className="btn d-block mx-auto">
+                        <SyncLoader size={8} color="#ffffff" loading={loading} /> Upload Content</button>
                 </form>
-                {imageUrls.map(imageSrc => <img src={imageSrc} className="w-60 m-2" style={{ height: "200px" }} />)}
-
             </div>
         </>
     )

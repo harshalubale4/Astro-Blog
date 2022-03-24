@@ -8,9 +8,9 @@ const { storage, cloudinary } = require('../cloudinary/index');
 const upload = multer({ storage });
 
 router.post('/', upload.array('image'), [
-    body('title', 'Enter a Title of Min Length 5').isLength({ min: 5 }).exists(),
-    body('quote', "Please Enter a Quote of Min Length 10").isLength(10).exists(),
-    body('about', 'Please Write something in About Section of Min Length 20').isLength({ min: 20 }).exists()
+    body('title', 'Enter a Title of Min Length 5').isLength({ min: 4 }).exists(),
+    body('quote', "Please Enter a Quote of Min Length 10").isLength(4).exists(),
+    body('about', 'Please Write something in About Section of Min Length 20').isLength({ min: 4 }).exists()
 ], isLoggedIn, async (req, res) => {
     try {
         const errors = validationResult(req);
