@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import PostImage from '../../Components/PostCard/PostImage';
 import SyncLoader from "react-spinners/SyncLoader";
+import './Post.css'
 
 const Post = () => {
     const navigate = useNavigate();
@@ -42,17 +43,7 @@ const Post = () => {
 
     return (
         <>
-            <h1 className='display-2'>
-                {post.title}
-            </h1>
-            <h4 className='display-5 text-muted'>
-                {post.quote}
-            </h4>
-            <h6>
-                {post.about}
-            </h6>
-
-            <div>
+            {/* <div>
                 {
                     post.images && post.images.map((img, index) => {
                         return (
@@ -65,12 +56,41 @@ const Post = () => {
                     })
                 }
                 <SyncLoader loading={loading} />
-            </div>
-            {
+            </div> */}
+            {/* {
                 localStorage.getItem('auth-token') ?
                     (<button className='btn btn-danger' onClick={deletePost}>Delete this Post</button>)
                     : ""
-            }
+            } */}
+
+
+            <div className='post-container mx-auto p-4'>
+                <h1 className='postTitle'>
+                    {post.title}
+                </h1>
+                <div className='d-flex flex-row-reverse mt-2'>
+                    <span className='ms-auto date'>
+                        {post.contentDate}
+                    </span>
+                </div>
+                <h6 className='mt-2 aboutPara'>
+                    {post.about}
+                </h6>
+
+                <div className='d-flex flex-row justify-content-around align-items-center flex-wrap'>
+                    {
+                        post.images && post.images.map((img, index) => {
+                            return (
+                                <PostImage img={img} key={index} name={index + 1} />
+                            )
+                        })
+                    }
+                    <SyncLoader loading={loading} />
+                </div>
+                <h4 className='text-muted mt-4 quote'>
+                    {post.quote}
+                </h4>
+            </div>
         </>
     )
 }

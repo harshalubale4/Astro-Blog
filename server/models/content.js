@@ -5,6 +5,8 @@ const ImageSchema = new mongoose.Schema({
     filename: String
 })
 
+var today = new Date();
+var date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
 
 const contentSchema = new mongoose.Schema({
     title: {
@@ -17,7 +19,11 @@ const contentSchema = new mongoose.Schema({
     about: {
         type: String
     },
-    images: [ImageSchema]
+    images: [ImageSchema],
+    contentDate: {
+        type: String,
+        default: date,
+    },
 });
 
 

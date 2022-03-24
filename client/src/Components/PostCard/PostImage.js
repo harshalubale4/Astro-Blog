@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import PuffLoader from 'react-spinners/PuffLoader';
 import SyncLoader from 'react-spinners/SyncLoader';
+import './PostImage.css'
+
 const PostImage = ({ img, name }) => {
 
     const [fetching, setFetching] = useState(false);
@@ -34,20 +36,23 @@ const PostImage = ({ img, name }) => {
     };
     return (
         <>
-            <div className='text-center'>
-                <PuffLoader loading={loading} />
+            <div className='d-flex flex-column mt-4'>
+                <div className='d-flex flex-column justify-content-center align-content-center'>
+                    <PuffLoader color='#ffffff' loading={loading} />
+                    <img onLoad={() => setLoading(false)} src={img.optimized} className='m-2 myImage' />
+                </div>
+                <div className='text-center'>
+                    <button
+                        id='myImageButton'
+                        className='btn'
+                        disabled={fetching}
+                        onClick={() => download(url, filename)}
+                        aria-label="download gif"
+                    >
+                        <SyncLoader size={10} color="#ffffff" loading={downLoading} /> DOWNLOAD
+                    </button>
+                </div>
             </div>
-            <img onLoad={() => setLoading(false)} src={img.optimized} className='m-2' style={{ width: "400px" }} />
-            {/* <button className='btn btn-secondary'>Download</button> */}
-            <SyncLoader loading={downLoading} />
-            <button
-                className='btn btn-success'
-                disabled={fetching}
-                onClick={() => download(url, filename)}
-                aria-label="download gif"
-            >
-                DOWNLOAD
-            </button>
         </>
     )
 }
