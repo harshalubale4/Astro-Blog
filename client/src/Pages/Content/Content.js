@@ -39,18 +39,19 @@ const Content = ({ showAlert }) => {
             {
                 loading ? (<PuffLoader size={60} margin={2} speedMultiplier={1} loading={loading} />) :
                     <>
-                        <div className='content-container'>
-                            <div className='d-flex flex-row justify-content-between flex-wrap container mb-auto'>
-                                {fetchedContent.map((elem) => {
-                                    return (
-                                        <div className=''>
-                                            <Card title={elem.title} quote={elem.quote} about={elem.about} id={elem._id} />
-                                        </div>
-                                    )
-                                })}
-
-                            </div>
-
+                        <div className='d-flex flex-row justify-content-around align-items-center flex-wrap mx-auto content-container p-2'>
+                            {fetchedContent.map((elem) => {
+                                return (
+                                    <Card
+                                        key={elem._id}
+                                        title={elem.title}
+                                        quote={elem.quote}
+                                        about={elem.about}
+                                        id={elem._id}
+                                        imagesSrc={elem.images}
+                                    />
+                                )
+                            })}
                         </div>
                         <div className='d-flex flex-row justify-content-center mt-auto' id='paginationContainer'>
                             <CustomPagination numberOfPages={numOfPages} setPage={setPage} />

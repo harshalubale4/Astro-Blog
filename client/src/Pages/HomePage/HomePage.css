@@ -16,6 +16,7 @@
     margin-top: 130px;
     margin-left: 30px;
     text-decoration: none;
+    transition: 0.4s;
 }
 
 .circle:hover{
@@ -32,17 +33,20 @@
     color: rgb(0, 0, 0);
 }
 
-@media (max-width:560px) {
+@media (max-width:500px) {
     #home-container{
-        margin-top: 50px;
-        width: 80%;
+        margin-top: 0px;
+        width: 90%;
         flex-wrap: wrap;
     }
     .circle{
+        margin: 0 0;
+        text-align: center;
         margin-top: 2rem;
     }
     .para{
+        text-align: center;
         width: 90%;
-        font-size: 1.4rem;
+        font-size: 1rem;
     }
 }
