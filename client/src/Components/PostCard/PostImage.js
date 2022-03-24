@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PuffLoader from 'react-spinners/PuffLoader';
 import SyncLoader from 'react-spinners/SyncLoader';
 import './PostImage.css'
+import DownloadIcon from '@mui/icons-material/Download';
 
 const PostImage = ({ img, name }) => {
 
@@ -49,7 +50,8 @@ const PostImage = ({ img, name }) => {
                         onClick={() => download(url, filename)}
                         aria-label="download gif"
                     >
-                        <SyncLoader size={10} color="#ffffff" loading={downLoading} /> DOWNLOAD
+                        <SyncLoader size={10} color="#ffffff" loading={downLoading} />
+                        <DownloadIcon /> DOWNLOAD
                     </button>
                 </div>
             </div>

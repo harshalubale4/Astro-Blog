@@ -3,6 +3,9 @@ import { useNavigate, useParams } from 'react-router-dom'
 import PostImage from '../../Components/PostCard/PostImage';
 import SyncLoader from "react-spinners/SyncLoader";
 import './Post.css'
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import TocIcon from '@mui/icons-material/Toc';
+import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 
 const Post = () => {
     const navigate = useNavigate();
@@ -54,11 +57,11 @@ const Post = () => {
                 <hr className="hrStyle" size="6" />
                 <div className='d-flex flex-row-reverse mt-2'>
                     <span className='date'>
-                        {post.contentDate}
+                        <CalendarTodayIcon /> {post.contentDate}
                     </span>
                 </div>
                 <h6 className='mt-4 aboutPara'>
-                    {post.about}
+                    <TocIcon /> {post.about}
                 </h6>
                 <div className='d-flex flex-row justify-content-around align-items-center flex-wrap'>
                     {
@@ -70,7 +73,7 @@ const Post = () => {
                     }
                 </div>
                 <h4 className='mt-4 quote p-2'>
-                    {post.quote}
+                    <FormatQuoteIcon /> {post.quote} <FormatQuoteIcon />
                 </h4>
                 {
                     localStorage.getItem('auth-token') ?

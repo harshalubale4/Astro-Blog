@@ -31,8 +31,8 @@
 }
 
 .nav-links:hover{
-    color: rgba(219, 213, 213, 0.514);
-    border-bottom: 3px solid rgba(219, 213, 213, 0.514);
+    color: white;
+    border-bottom: 3px solid rgba(187, 187, 187, 0.514);
 }
 
 .nav-brand-container{

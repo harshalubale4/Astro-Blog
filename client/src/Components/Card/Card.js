@@ -16,7 +16,9 @@ const Card = ({ title, quote, about, id, imagesSrc }) => {
                 </div>
                 <hr className="hrStyle" size="4" />
                 <div>
-                    <Link to={`/content/${id}`} className='btn' id='myButton'>See Post</Link>
+                    <Link to={`/content/${id}`} className='btn' id='myButton'>
+                        See Post
+                    </Link>
                 </div>
             </div >
 

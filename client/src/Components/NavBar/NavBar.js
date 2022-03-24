@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "./NavBar.css"
+import CameraAltOutlined from '@mui/icons-material/CameraAltOutlined';
+import PersonIcon from '@mui/icons-material/Person';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
 const NavBar = () => {
     const navigate = useNavigate();
@@ -39,14 +42,14 @@ const NavBar = () => {
                 <nav>
                     <ul id="primary-navigation" data-visible="false" className="primary-navigation underline-indicators flex my-2">
                         <li>
-                            <Link to="/content" className='nav-links'>
-                                Content
+                            <Link to="/content" className='nav-links py-2'>
+                                Content <CameraAltOutlined />
                             </Link>
                         </li>
 
-                        <li >
-                            <Link to="/about" className='nav-links'>
-                                About
+                        <li>
+                            <Link to="/about" className='nav-links py-2'>
+                                About <PersonIcon />
                             </Link>
                         </li>
 
@@ -55,8 +58,8 @@ const NavBar = () => {
                                 ?
                                 (
                                     <li>
-                                        <Link to="/adminlogin" className='nav-links'>
-                                            Admin Login
+                                        <Link to="/adminlogin" className='nav-links py-2'>
+                                            Admin Login <AdminPanelSettingsIcon />
                                         </Link>
                                     </li>
                                 )
@@ -64,12 +67,12 @@ const NavBar = () => {
                                 (
                                     <>
                                         <li>
-                                            <Link to="/contentform" className='nav-links'>
+                                            <Link to="/contentform" className='nav-links py-2'>
                                                 Content Form
                                             </Link>
                                         </li>
                                         <li>
-                                            <a className='nav-links' onClick={logout}>
+                                            <a className='nav-links py-2' onClick={logout}>
                                                 Logout
                                             </a>
                                         </li>

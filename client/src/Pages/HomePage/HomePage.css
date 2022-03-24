@@ -33,7 +33,7 @@
     color: rgb(0, 0, 0);
 }
 
-@media (max-width:600px) {
+@media (max-width:700px) {
     #home-container{
         margin-top: 0px;
         width: 90%;
@@ -43,6 +43,8 @@
         margin: 0 0;
         text-align: center;
         margin-top: 2rem;
+        width:10rem;
+        height: 10rem;
     }
     .para{
         text-align: center;
