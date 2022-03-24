@@ -13,7 +13,6 @@ const AdminLogin = ({ showAlert }) => {
     const handleSubmit = async (e) => {
         setLoading(true);
         e.preventDefault();
-        console.log(username, password);
 
         const response = await fetch(`${host}/api/auth/login`, {
             method: "POST",
@@ -68,7 +67,7 @@ const AdminLogin = ({ showAlert }) => {
                 <h1 className='text-center mb-4'>
                     ADMIN LOGIN
                 </h1>
-                <form onSubmit={handleSubmit} className="needs-validation" novalidate>
+                <form onSubmit={handleSubmit} className="needs-validation" noValidate>
                     <div className="mb-3 mx-auto">
                         <label htmlFor="username" className="form-label">Admin Username</label>
                         <input type="text" className="form-control" id="username" aria-describedby="emailHelp" value={username} onChange={(e) => setUsername(e.target.value)} required />
