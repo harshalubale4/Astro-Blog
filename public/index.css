@@ -1,0 +1,40 @@
+/* body{
+  min-height: 100vh;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Red+Hat+Mono:ital@1&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Red Hat Mono', monospace;
+  color: white;
+  box-sizing: border-box;
+}
+body{
+  background-image:linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.65)), url(https://images.unsplash.com/photo-1447433589675-4aaa569f3e05?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1780&q=80);
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: white;
+}
+#root{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(184, 178, 178);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(56, 56, 56);
+}

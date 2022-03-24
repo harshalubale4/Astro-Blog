@@ -1,0 +1,48 @@
+.post-container{
+    width: 60%;
+    height: 100%;
+    backdrop-filter: blur(4px);
+}
+
+.postTitle{
+    font-size: 3em;
+    text-transform: uppercase;
+}
+
+.aboutPara{
+    font-size: 1.2em;
+}
+.quote{
+    font-size:1.4em ;
+    text-align: center;
+    color: rgb(158, 167, 167);
+    border: 5px solid white;
+}
+
+@media(max-width: 700px){
+   .post-container{
+       width: 90%;
+       font-size: 0.7em;
+   }
+}
+
+.date{
+    font-size: 1.1em;
+    border-bottom: 3px solid rgb(235, 235, 235);
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  .btn{
+	box-shadow: none !important
+}
+
+.hrStyle {
+    size: 20px;
+    width: 80%;
+    border: 0;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1));
+}
