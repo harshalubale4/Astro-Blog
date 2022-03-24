@@ -7,7 +7,7 @@ const AdminLogin = ({ showAlert }) => {
     const navigate = useNavigate()
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const host = process.env.React_App_Server_Url;
+    const host = `${process.env.React_App_Server_Url}`;
     const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e) => {

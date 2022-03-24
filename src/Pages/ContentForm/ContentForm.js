@@ -10,7 +10,7 @@ const ContentForm = ({ showAlert }) => {
     const [imageUrls, setImageUrls] = useState([]);
     const [images, setImages] = useState([]);
     const [content, setContent] = useState({ title: '', quote: '', about: '' });
-    const host = process.env.React_App_Server_Url;
+    const host = `${process.env.React_App_Server_Url}`;
 
     const isLoggedIn = async () => {
         const host = process.env.React_App_Server_Url;
