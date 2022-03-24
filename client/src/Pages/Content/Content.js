@@ -5,7 +5,7 @@ import PuffLoader from "react-spinners/PuffLoader";
 import './Content.css'
 
 const Content = ({ showAlert }) => {
-    const host = process.env.React_App_Server_Url;
+    const host = `${process.env.React_App_Server_Url}`;
     const [fetchedContent, setFetchedContent] = useState([]);
     const [numOfPages, setNumOfPages] = useState(10);
     const [loading, setLoading] = useState(false);

@@ -11,7 +11,7 @@ const Post = () => {
     const navigate = useNavigate();
     const { id } = useParams();
     const [loading, setLoading] = useState(false);
-    const host = process.env.React_App_Server_Url;
+    const host = `${process.env.React_App_Server_Url}`;
     const [post, setPost] = useState({});
     const fetchPostData = async (id) => {
         const response = await fetch(`${host}/api/content/${id}`, {
