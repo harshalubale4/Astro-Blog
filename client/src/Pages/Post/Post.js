@@ -18,6 +18,10 @@ const Post = () => {
             }
         });
         const json = await response.json();
+        if (json.error) {
+            navigate('/error');
+            return;
+        }
         console.log(json);
         setPost(json);
     }
