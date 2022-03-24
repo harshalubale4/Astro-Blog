@@ -4,6 +4,8 @@ import "./NavBar.css"
 import CameraAltOutlined from '@mui/icons-material/CameraAltOutlined';
 import PersonIcon from '@mui/icons-material/Person';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import FormatAlignCenterIcon from '@mui/icons-material/FormatAlignCenter';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const NavBar = () => {
     const navigate = useNavigate();
@@ -68,12 +70,12 @@ const NavBar = () => {
                                     <>
                                         <li>
                                             <Link to="/contentform" className='nav-links py-2'>
-                                                Content Form
+                                                Content Form <FormatAlignCenterIcon />
                                             </Link>
                                         </li>
                                         <li>
                                             <a className='nav-links py-2' onClick={logout}>
-                                                Logout
+                                                Logout <LogoutIcon />
                                             </a>
                                         </li>
                                     </>

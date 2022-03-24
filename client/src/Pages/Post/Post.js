@@ -56,7 +56,7 @@ const Post = () => {
                 </h1>
                 <hr className="hrStyle" size="6" />
                 <div className='d-flex flex-row-reverse mt-2'>
-                    <span className='date'>
+                    <span className='date pb-2'>
                         <CalendarTodayIcon /> {post.contentDate}
                     </span>
                 </div>

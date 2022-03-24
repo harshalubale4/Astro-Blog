@@ -37,7 +37,13 @@ const Content = ({ showAlert }) => {
 
         <>
             {
-                loading ? (<PuffLoader size={60} margin={2} speedMultiplier={1} loading={loading} />) :
+                loading ? (
+                    <div className='text-center' style={{
+                        marginTop: "100px"
+                    }}>
+                        <PuffLoader color='#ffffff' size={150} margin={2} speedMultiplier={2} loading={loading} />
+                    </div>
+                ) :
                     <>
                         <div className='d-flex flex-row justify-content-around align-items-center flex-wrap mx-auto content-container p-2'>
                             {fetchedContent.map((elem) => {
