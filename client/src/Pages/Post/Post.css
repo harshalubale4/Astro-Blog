@@ -1,7 +1,7 @@
 .post-container{
     width: 60%;
     height: 100%;
-   backdrop-filter: blur(3px);
+    backdrop-filter: blur(4px);
 }
 
 .postTitle{
@@ -13,8 +13,10 @@
     font-size: 1.2em;
 }
 .quote{
-    font-size:1.6em ;
+    font-size:1.4em ;
     text-align: center;
+    color: rgb(158, 167, 167);
+    border: 5px solid white;
 }
 
 @media(max-width: 700px){
@@ -26,4 +28,21 @@
 
 .date{
     font-size: 1.1em;
+    border-bottom: 5px solid rgb(235, 235, 235);
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  .btn{
+	box-shadow: none !important
+}
+
+.hrStyle {
+    size: 20px;
+    width: 80%;
+    border: 0;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1));
 }

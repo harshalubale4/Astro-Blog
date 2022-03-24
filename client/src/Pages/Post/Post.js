@@ -43,40 +43,19 @@ const Post = () => {
 
     return (
         <>
-            {/* <div>
-                {
-                    post.images && post.images.map((img, index) => {
-                        return (
-                            // <div key={img._id}>
-                            //     <img src={img.optimized} className='m-2' style={{ width: "400px" }} />)
-                            //     <button className='btn btn-secondary'>Download</button>
-                            // </div>
-                            <PostImage img={img} key={index} name={index + 1} />
-                        )
-                    })
-                }
-                <SyncLoader loading={loading} />
-            </div> */}
-            {/* {
-                localStorage.getItem('auth-token') ?
-                    (<button className='btn btn-danger' onClick={deletePost}>Delete this Post</button>)
-                    : ""
-            } */}
-
-
             <div className='post-container mx-auto p-4'>
                 <h1 className='postTitle'>
                     {post.title}
                 </h1>
+                <hr className="hrStyle" size="6" />
                 <div className='d-flex flex-row-reverse mt-2'>
-                    <span className='ms-auto date'>
+                    <span className='date'>
                         {post.contentDate}
                     </span>
                 </div>
-                <h6 className='mt-2 aboutPara'>
+                <h6 className='mt-4 aboutPara'>
                     {post.about}
                 </h6>
-
                 <div className='d-flex flex-row justify-content-around align-items-center flex-wrap'>
                     {
                         post.images && post.images.map((img, index) => {
@@ -85,12 +64,23 @@ const Post = () => {
                             )
                         })
                     }
-                    <SyncLoader loading={loading} />
                 </div>
-                <h4 className='text-muted mt-4 quote'>
+                <h4 className='mt-4 quote p-2'>
                     {post.quote}
                 </h4>
+                {
+                    localStorage.getItem('auth-token') ?
+                        (
+                            <div className='text-center mt-4'>
+                                <button className='btn btn-danger' onClick={deletePost}>
+                                    <SyncLoader size={10} color='#ffffff' loading={loading} /> DELETE THIS POST</button>
+                            </div>
+                        )
+                        :
+                        ""
+                }
             </div>
+
         </>
     )
 }
