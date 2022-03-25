@@ -41,7 +41,7 @@ const Content = ({ showAlert }) => {
                     <div className='d-flex flex-row justify-content-center align-items-center' style={{
                         marginTop: "100px"
                     }}>
-                        <PuffLoader color='#ffffff' size={150} margin={2} speedMultiplier={2} loading={loading} />
+                        <PuffLoader color='#ffffff' size={150} speedMultiplier={2} loading={loading} />
                     </div>
                 ) :
                     <div className='d-flex flex-row justify-content-around align-items-center flex-wrap mx-auto content-container p-2'>
