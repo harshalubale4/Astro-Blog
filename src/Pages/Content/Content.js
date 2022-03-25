@@ -12,6 +12,7 @@ const Content = ({ showAlert }) => {
 
     const [page, setPage] = useState(1);
     const fetchContent = async () => {
+        setLoading(true);
         const response = await fetch(`${host}/api/content?page=${page}`, {
             method: "GET",
             headers: {
@@ -22,15 +23,14 @@ const Content = ({ showAlert }) => {
         setNumOfPages(json.numberOfPages);
         console.log(json);
         setFetchedContent(json.allContent);
+        setLoading(false);
     }
     useEffect(() => {
-        setLoading(true);
         try {
             fetchContent();
         } catch (e) {
             showAlert(e.message, 'warning');
         }
-        setLoading(false);
     }, [page]);
 
     return (
