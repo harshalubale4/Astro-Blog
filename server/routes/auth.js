@@ -76,7 +76,6 @@ router.post('/login',
             const authToken = jwt.sign(data, JWT_SEC);
             success = true;
             res.json({ success, authToken });
-
         } catch (e) {
             console.log(e);
             res.json({ error: 'An Error has Occured while Authenticating you', message: e.message });
