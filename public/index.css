@@ -42,3 +42,7 @@ html {
 ::-webkit-scrollbar-thumb {
   background: rgb(56, 56, 56);
 }
+
+.form-control:focus {
+  box-shadow: none !important;
+}
