@@ -15,6 +15,7 @@ const Post = () => {
     const host = `${process.env.React_App_Server_Url}`;
     const [post, setPost] = useState({});
     const [loaderForPostData, setLoaderForPostData] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
 
     const fetchPostData = async (id) => {
         setLoaderForPostData(true);
@@ -36,6 +37,29 @@ const Post = () => {
     useEffect(() => {
         fetchPostData(id);
     }, [])
+
+    const isLoggedIn = async () => {
+        const host = process.env.React_App_Server_Url;
+        const response = await fetch(`${host}/api/auth/isloggedin`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "auth-token": JSON.stringify(localStorage.getItem('auth-token'))
+            },
+        });
+        const json = await response.json();
+        console.log(json);
+        if (!json.isLoggedIn) {
+            setIsAdmin(false);
+        } else {
+            setIsAdmin(true);
+        }
+    }
+
+    useEffect(() => {
+        isLoggedIn();
+    }, [])
+
 
     const deletePost = async () => {
         setLoading(true);
@@ -89,7 +113,7 @@ const Post = () => {
                                 <FormatQuoteIcon /> {post.quote} <FormatQuoteIcon />
                             </h4>
                             {
-                                localStorage.getItem('auth-token') ?
+                                isAdmin ?
                                     (
                                         <div className='text-center mt-4'>
                                             <button className='btn btn-danger' onClick={deletePost}>
