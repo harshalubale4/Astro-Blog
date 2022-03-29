@@ -45,7 +45,7 @@ const NavBar = () => {
                     <ul id="primary-navigation" data-visible="false" className="primary-navigation underline-indicators flex my-2">
                         <li>
                             <Link to="/content" className='nav-links py-2'>
-                                Content <CameraAltOutlined />
+                                Gallery <CameraAltOutlined />
                             </Link>
                         </li>
 
