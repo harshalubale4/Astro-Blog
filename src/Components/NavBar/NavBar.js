@@ -37,7 +37,7 @@ const NavBar = () => {
             <header className='primary-header flex'>
                 <div className='nav-brand-container'>
                     <Link to="/" className='nav-brand'>
-                        Website Name</Link>
+                        Astro Blog</Link>
                 </div>
                 <button className='mobile-nav-toggle' aria-controls='primary-navigation' aria-expanded='false'><span className='sr-only'> </span></button>
 

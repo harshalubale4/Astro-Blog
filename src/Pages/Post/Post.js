@@ -104,7 +104,7 @@ const Post = () => {
                                 {
                                     post.images && post.images.map((img, index) => {
                                         return (
-                                            <PostImage img={img} key={index} name={index + 1} />
+                                            <PostImage img={img} key={index} number={index + 1} name={post.title} />
                                         )
                                     })
                                 }
