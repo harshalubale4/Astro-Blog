@@ -12,7 +12,7 @@ const HomePage = () => {
         });
         const json = await respo.json();
         console.log(json);
-        setImageUrlOfTheDay(json.url);
+        setImageUrlOfTheDay(json.hdurl);
         setTitleOfImageOftheDay(json.title);
         setDescOfTheImageOfTheDay(json.explanation);
     }
