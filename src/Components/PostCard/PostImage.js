@@ -9,7 +9,7 @@ const PostImage = ({ img, name, number }) => {
     const [fetching, setFetching] = useState(false);
     const [error, setError] = useState(false);
     const url = `${img.url}`;
-    const filename = `Astro-Blog ${name}` + ` ${number}`
+    const filename = `Astro-Blog ${name}` + ` ${number}.jpg`
     const [loading, setLoading] = useState(true);
     const [downLoading, setDownLoading] = useState(false);
     const download = (url, name) => {
