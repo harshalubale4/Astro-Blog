@@ -3,22 +3,25 @@
 } */
 
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Red+Hat+Mono:ital@1&display=swap');
-*{
+
+* {
   margin: 0;
   padding: 0;
   font-family: 'Red Hat Mono', monospace;
   color: white;
   box-sizing: border-box;
 }
-body{
-  background-image:linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('./assets/bgimage.jpg');
+
+body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./assets/bgimage.jpg');
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center;
   color: white;
 }
-#root{
+
+#root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
