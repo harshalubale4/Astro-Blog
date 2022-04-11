@@ -8,28 +8,13 @@
     text-align: center;
 }
 
-.circle {
-    width: fit-content;
-    height: fit-content;
-    padding: 20px 45px;
+#explore {
     background-color: rgb(255, 255, 255);
-    border-radius: 10%;
-    text-decoration: none;
-    transition: 0.4s;
-}
-
-.circle:hover {
-    box-shadow: 0 0 10px 10px #fff;
-}
-
-.explore {
-    font-size: 1.8rem;
+    border-radius: 0.4em;
     color: black;
-    font-weight: 900;
-}
-
-.explore:hover {
-    color: rgb(0, 0, 0);
+    font-size: 2em;
+    font-weight: 400;
+    padding: 0.6em 1.2em;
 }
 
 .nasaImageOfTheDayContainer {
@@ -41,24 +26,14 @@
 }
 
 .nasaImageContainer {
-    width: 1100px;
+    width: 80%;
     height: 80vh;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     box-sizing: border-box;
     object-fit: contain;
-    border-top-left-radius: 3em;
-    border-top-right-radius: 3em;
-}
-
-
-.imageDesc {
-    background-color: black;
-    padding: 2em 4em;
-    font-size: 1em;
-    border-bottom-left-radius: 1.4em;
-    border-bottom-right-radius: 1.4em;
+    border-radius: 1em;
 }
 
 .astroTitle {
@@ -94,6 +69,7 @@
         margin-top: 2rem;
         width: 10rem;
         height: 10rem;
+        padding: 1em 2em;
     }
 
     .para {
@@ -101,4 +77,16 @@
         width: 90%;
         font-size: 1rem;
     }
+}
+
+#readMoreButton {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-size: 1em;
+    padding: 0.5em 1em;
+    font-weight: 900;
+}
+
+#readMoreButton:hover {
+    color: rgb(55, 55, 55);
 }
