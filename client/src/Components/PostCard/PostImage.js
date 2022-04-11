@@ -4,12 +4,12 @@ import SyncLoader from 'react-spinners/SyncLoader';
 import './PostImage.css'
 import DownloadIcon from '@mui/icons-material/Download';
 
-const PostImage = ({ img, name }) => {
+const PostImage = ({ img, name, number }) => {
 
     const [fetching, setFetching] = useState(false);
     const [error, setError] = useState(false);
     const url = `${img.url}`;
-    const filename = `Website Name-` + `${name}`
+    const filename = `Astro-Blog ${name}` + ` ${number}.jpg`
     const [loading, setLoading] = useState(true);
     const [downLoading, setDownLoading] = useState(false);
     const download = (url, name) => {

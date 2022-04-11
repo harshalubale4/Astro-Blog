@@ -6,7 +6,7 @@ const Footer = () => {
     return (
         <>
             <div className='footerContainer mt-4'>
-                &copy; Website Name 2022
+                &copy; Astro Blog 2022
             </div>
         </>
     )

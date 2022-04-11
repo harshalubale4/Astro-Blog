@@ -1,54 +1,92 @@
-#home-container{
-    margin-top: 120px;
+#home-container {
+    margin-top: 50px;
     width: 60%;
 }
 
-.para{
+.para {
     font-size: 1.8rem;
-    width: 50%;
+    text-align: center;
 }
 
-.circle{
-    width: 10rem;
-    height: 10rem;
+#explore {
     background-color: rgb(255, 255, 255);
-    border-radius: 50%;
-    margin-top: 130px;
-    margin-left: 30px;
-    text-decoration: none;
-    transition: 0.4s;
-}
-
-.circle:hover{
-    box-shadow: 0 0 100px 10px #fff;
-}
-
-.explore{
-    font-size: 1.8rem;
+    border-radius: 0.4em;
     color: black;
-    font-weight: 900;
+    font-size: 2em;
+    font-weight: 400;
+    padding: 0.6em 1.2em;
 }
 
-.explore:hover{
-    color: rgb(0, 0, 0);
+.nasaImageOfTheDayContainer {
+    backdrop-filter: blur(20px);
+}
+
+.nasaImageOfTheDay {
+    width: 40%;
+}
+
+.nasaImageContainer {
+    width: 80%;
+    height: 80vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: border-box;
+    object-fit: contain;
+    border-radius: 1em;
+}
+
+.astroTitle {
+    backdrop-filter: blur(20px);
+    text-transform: capitalize;
+    font-size: 2em;
+    letter-spacing: 0.15rem;
+}
+
+@media (max-width: 500px) {
+    .nasaImageContainer {
+        width: 400px;
+        height: 38vh;
+        font-size: 1em;
+    }
+
+    .astroTitle {
+        font-size: 1.2em;
+        padding-top: 0.5em;
+    }
 }
 
 @media (max-width:700px) {
-    #home-container{
+    #home-container {
         margin-top: 0px;
         width: 90%;
         flex-wrap: wrap;
     }
-    .circle{
+
+    .circle {
         margin: 0 0;
         text-align: center;
         margin-top: 2rem;
-        width:10rem;
+        width: 10rem;
         height: 10rem;
+        padding: 1em 2em;
     }
-    .para{
+
+    .para {
         text-align: center;
         width: 90%;
         font-size: 1rem;
     }
+}
+
+#readMoreButton {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-size: 1em;
+    padding: 0.5em 1em;
+    font-weight: 900;
+}
+
+#readMoreButton:hover {
+    color: rgb(55, 55, 55);
 }
