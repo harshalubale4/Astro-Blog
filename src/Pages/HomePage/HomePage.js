@@ -52,20 +52,21 @@ const HomePage = () => {
                 </div>
             </Link>
 
-
-            <div
-                className='nasaImageContainer d-flex flex-column mx-2 mt-3 p-2 p-lg-4 p-md-3 mx-auto'
-                style={{
-                    backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(${imageUrlOfTheDay})`
-                }}
-            >
-                <div className='astroTitle text-center'>
-                    Astronomy Picture Of the Day(APOD)
-                </div>
-                <div className='title text-center mt-auto'>
-                    {titleOfImageOftheDay}
-                </div>
-            </div >
+            <div className='container'>
+                <div
+                    className='nasaImageContainer d-flex flex-column mx-2 mt-3 p-2 p-lg-4 p-md-3 mx-auto'
+                    style={{
+                        backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(${imageUrlOfTheDay})`
+                    }}
+                >
+                    <div className='astroTitle text-center'>
+                        Astronomy Picture Of the Day(APOD)
+                    </div>
+                    <div className='title text-center mt-auto'>
+                        {titleOfImageOftheDay}
+                    </div>
+                </div >
+            </div>
 
             <button onClick={handleOpen} className="btn mx-auto d-block my-3" id="readMoreButton">Read More</button>
             <Modal
