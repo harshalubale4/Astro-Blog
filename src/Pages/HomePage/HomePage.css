@@ -1,13 +1,3 @@
-#home-container {
-    margin-top: 50px;
-    width: 60%;
-}
-
-.para {
-    font-size: 1.8rem;
-    text-align: center;
-}
-
 #explore {
     background-color: rgb(255, 255, 255);
     border-radius: 0.4em;
@@ -15,14 +5,6 @@
     font-size: 2em;
     font-weight: 400;
     padding: 0.6em 1.2em;
-}
-
-.nasaImageOfTheDayContainer {
-    backdrop-filter: blur(20px);
-}
-
-.nasaImageOfTheDay {
-    width: 40%;
 }
 
 .nasaImageContainer {
@@ -45,13 +27,13 @@
 
 @media (max-width: 400px) {
     .nasaImageContainer {
-        width: 400px;
+        width: 300px;
     }
 }
 
 @media (max-width: 500px) {
     .nasaImageContainer {
-        width: 400px;
+
         height: 38vh;
         font-size: 1em;
     }

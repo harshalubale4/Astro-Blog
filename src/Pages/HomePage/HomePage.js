@@ -52,46 +52,46 @@ const HomePage = () => {
                 </div>
             </Link>
 
-            <div className='container'>
-                <div
-                    className='nasaImageContainer d-flex flex-column mx-2 mt-3 p-2 p-lg-4 p-md-3 mx-auto'
-                    style={{
-                        backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(${imageUrlOfTheDay})`
-                    }}
-                >
-                    <div className='astroTitle text-center'>
-                        Astronomy Picture Of the Day(APOD)
-                    </div>
-                    <div className='title mt-auto text-center'>
-                        {titleOfImageOftheDay}
-                    </div>
-                </div >
 
-                <button onClick={handleOpen} className="btn mx-auto d-block my-3" id="readMoreButton">Read More</button>
-                <Modal
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
-                >
-                    <Box sx={style} style={{ maxHeight: "65vh", overflow: 'auto' }}>
-                        <Typography id="modal-modal-title" variant="h4" component="h2" className='text-center'>
-                            {titleOfImageOftheDay}
-                        </Typography>
-                        <Typography
-                            className='text-center'
-                            id="modal-modal-description" sx={{ mt: 2 }}>
-                            {descOfTheImageOfTheDay}
-                        </Typography>
-                        {
-                            copyRight &&
-                            <div className='text-muted my-3 text-center '>
-                                &#169; {copyRight}
-                            </div>
-                        }
-                    </Box>
-                </Modal>
-            </div>
+            <div
+                className='nasaImageContainer d-flex flex-column mx-2 mt-3 p-2 p-lg-4 p-md-3 mx-auto'
+                style={{
+                    backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(${imageUrlOfTheDay})`
+                }}
+            >
+                <div className='astroTitle text-center'>
+                    Astronomy Picture Of the Day(APOD)
+                </div>
+                <div className='title text-center mt-auto'>
+                    {titleOfImageOftheDay}
+                </div>
+            </div >
+
+            <button onClick={handleOpen} className="btn mx-auto d-block my-3" id="readMoreButton">Read More</button>
+            <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={style} style={{ maxHeight: "65vh", overflow: 'auto' }}>
+                    <Typography id="modal-modal-title" variant="h4" component="h2" className='text-center'>
+                        {titleOfImageOftheDay}
+                    </Typography>
+                    <Typography
+                        className='text-center'
+                        id="modal-modal-description" sx={{ mt: 2 }}>
+                        {descOfTheImageOfTheDay}
+                    </Typography>
+                    {
+                        copyRight &&
+                        <div className='text-muted my-3 text-center '>
+                            &#169; {copyRight}
+                        </div>
+                    }
+                </Box>
+            </Modal>
+
         </>
     )
 }
