@@ -33,7 +33,6 @@
 
 @media (max-width: 500px) {
     .nasaImageContainer {
-
         height: 38vh;
         font-size: 1em;
     }
@@ -41,6 +40,18 @@
     .astroTitle {
         font-size: 1.2em;
         padding-top: 0.5em;
+    }
+
+    #explore {
+        font-size: 1em;
+        font-weight: 400;
+        padding: 0.3em 1.6em;
+    }
+
+    #readMoreButton {
+        font-size: 0.6em !important;
+        padding: 0.4em 8em;
+        font-weight: 900;
     }
 }
 
