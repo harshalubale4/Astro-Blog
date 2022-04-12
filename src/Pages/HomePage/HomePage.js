@@ -83,9 +83,12 @@ const HomePage = () => {
                             id="modal-modal-description" sx={{ mt: 2 }}>
                             {descOfTheImageOfTheDay}
                         </Typography>
-                        <div className='text-muted my-3 text-center '>
-                            &#169; {copyRight}
-                        </div>
+                        {
+                            copyRight &&
+                            <div className='text-muted my-3 text-center '>
+                                &#169; {copyRight}
+                            </div>
+                        }
                     </Box>
                 </Modal>
             </div>

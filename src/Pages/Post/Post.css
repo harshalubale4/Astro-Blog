@@ -1,19 +1,20 @@
-.post-container{
+.post-container {
     width: 60%;
     height: 100%;
     backdrop-filter: blur(4px);
 }
 
-.postTitle{
+.postTitle {
     font-size: 2.6em;
     text-transform: uppercase;
 }
 
-.aboutPara{
+.aboutPara {
     font-size: 1.2em;
 }
-.quote{
-    font-size:1.2em ;
+
+.quote {
+    font-size: 1.2em;
     text-align: center;
     color: rgb(204, 204, 204);
     border: 3px solid white;
@@ -21,14 +22,14 @@
     border-bottom-right-radius: 1em;
 }
 
-@media(max-width: 700px){
-   .post-container{
-       width: 90%;
-       font-size: 0.7em;
-   }
+@media(max-width: 700px) {
+    .post-container {
+        width: 90%;
+        font-size: 0.7em;
+    }
 }
 
-.date{
+.date {
     font-size: 1.1em;
     border-bottom: 3px solid rgb(235, 235, 235);
 }
@@ -36,10 +37,10 @@
 .btn:focus {
     outline: none;
     box-shadow: none;
-  }
+}
 
-  .btn{
-	box-shadow: none !important
+.btn {
+    box-shadow: none !important
 }
 
 .hrStyle {

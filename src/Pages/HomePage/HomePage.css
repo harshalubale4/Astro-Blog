@@ -43,6 +43,12 @@
     letter-spacing: 0.15rem;
 }
 
+@media (max-width: 400px) {
+    .nasaImageContainer {
+        width: 400px;
+    }
+}
+
 @media (max-width: 500px) {
     .nasaImageContainer {
         width: 400px;
