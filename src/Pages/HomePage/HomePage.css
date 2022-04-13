@@ -43,14 +43,14 @@
     }
 
     #explore {
-        font-size: 1em;
+        font-size: 1.4em;
         font-weight: 400;
-        padding: 0.3em 1.6em;
+        padding: 0.5em 1.8em;
     }
 
     #readMoreButton {
-        font-size: 0.6em !important;
-        padding: 0.4em 8em;
+        font-size: 0.8em !important;
+        padding: 0.3em 0.7em !important;
         font-weight: 900;
     }
 }

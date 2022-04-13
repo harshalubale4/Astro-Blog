@@ -10,11 +10,11 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: "70%",
+    width: "80%",
     bgcolor: 'black',
-    border: '2px solid #000',
+    border: '2px solid #fff',
     borderRadius: 8,
-    boxShadow: 24,
+    boxShadow: 50,
     p: 4,
 };
 
@@ -46,7 +46,7 @@ const HomePage = () => {
 
     return (
         <>
-            <Link to='/content' className='mx-auto my-5 text-decoration-none'>
+            <Link to='/content' className='mx-auto my-2 text-decoration-none'>
                 <div id='explore' >
                     Explore
                 </div>
@@ -59,9 +59,9 @@ const HomePage = () => {
                         backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(${imageUrlOfTheDay})`
                     }}
                 >
-                    <div className='astroTitle text-center'>
+                    <span className='astroTitle text-center'>
                         Astronomy Picture Of the Day(APOD)
-                    </div>
+                    </span>
                     <div className='title text-center mt-auto'>
                         {titleOfImageOftheDay}
                     </div>
