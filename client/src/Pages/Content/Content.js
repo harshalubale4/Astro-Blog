@@ -4,6 +4,7 @@ import CustomPagination from '../../Components/Pagination/CustomPagination';
 import PuffLoader from "react-spinners/PuffLoader";
 import './Content.css';
 
+
 const Content = ({ showAlert }) => {
     const host = `${process.env.React_App_Server_Url}`;
     const [fetchedContent, setFetchedContent] = useState([]);
