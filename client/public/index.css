@@ -1,0 +1,51 @@
+/* body{
+  min-height: 100vh;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Red+Hat+Mono:ital@1&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Red Hat Mono', monospace;
+  color: white;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./assets/bgimage.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: white;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(184, 178, 178);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(56, 56, 56);
+}
+
+.form-control:focus {
+  box-shadow: none !important;
+}

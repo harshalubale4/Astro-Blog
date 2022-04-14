@@ -1,0 +1,22 @@
+.contentFormConatiner{
+    backdrop-filter: blur(4px);
+}
+
+#submitButton{
+    background-color: black;
+    color: white;
+    font-size: 1em;
+}
+
+#submitButton:hover{
+    color: rgb(201, 201, 201);
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  .btn{
+	box-shadow: none !important
+}
