@@ -25,6 +25,17 @@
     letter-spacing: 0.15rem;
 }
 
+.myBox::-webkit-scrollbar {
+    display: none;
+}
+
+.myBox {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
 @media (max-width: 400px) {
     .nasaImageContainer {
         width: 300px;

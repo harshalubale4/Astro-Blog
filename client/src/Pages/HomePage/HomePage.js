@@ -75,7 +75,7 @@ const HomePage = () => {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box sx={style} style={{ maxHeight: "65vh", overflow: 'auto' }}>
+                <Box sx={style} style={{ maxHeight: "65vh", overflow: 'auto' }} className='myBox'>
                     <Typography id="modal-modal-title" variant="h4" component="h2" className='text-center'>
                         {titleOfImageOftheDay}
                     </Typography>
