@@ -21,3 +21,6 @@ A Blogging Website designed specifically for Amateur Astro Photographers so that
 
 ## 📷Snapshots
 
+### Home Page
+<img src="/client/public/assets/snapshots/Home Page.png" />
+
