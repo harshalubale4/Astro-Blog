@@ -8,6 +8,10 @@ A Blogging Website designed specifically for Amateur Astro Photographers so that
 
 ### 🎞️ [Astro Blog](https://astroblogg.vercel.app/)
 
+## Overview
+
+A small walkthrough through the project. [Click Me](https://docs.google.com/presentation/d/19V1817U4rdb8sr0tVB8ajyPFyW75aV1g88calKrW060/edit#slide=id.p16)
+
 ## 💻Tech Stack
 
 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" title="HTML"><img src="https://github.com/get-icon/geticon/raw/master/icons/html-5.svg" alt="HTMl" width="31px" height="31px"></a>
@@ -34,7 +38,7 @@ A Blogging Website designed specifically for Amateur Astro Photographers so that
 <img src="/client/public/assets/snapshots/Content Form.png" />
 
 ### Gallery
-<img src="/client/public/assets/snapshots/Gallery.png" />
+<img src="/client/public/assets/snapshots/Galley.png" />
 
 ### Login Page
 <img src="/client/public/assets/snapshots/Login Page.png" />
