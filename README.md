@@ -24,3 +24,23 @@ A Blogging Website designed specifically for Amateur Astro Photographers so that
 ### Home Page
 <img src="/client/public/assets/snapshots/Home Page.png" />
 
+### APOD (Astronomy Picture of the Day)
+<img src="/client/public/assets/snapshots/APOD .png" />
+
+### Blog Post
+<img src="/client/public/assets/snapshots/Blog Post.png" />
+
+### Content Form
+<img src="/client/public/assets/snapshots/Content Form.png" />
+
+### Gallery
+<img src="/client/public/assets/snapshots/Gallery.png" />
+
+### Login Page
+<img src="/client/public/assets/snapshots/Login Page.png" />
+
+### Admin Controls
+<img src="/client/public/assets/snapshots/Admin Controls.png" />
+
+
+
